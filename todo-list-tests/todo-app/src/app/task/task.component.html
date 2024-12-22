@@ -1,0 +1,21 @@
+<section>
+  <input
+    type="text"
+    [(ngModel)]="newTask"
+    placeholder="Enter new task"
+    (keydown.enter)="addTask()"
+  />
+  <button (click)="addTask()">Add</button>
+
+  <ul>
+    <li *ngFor="let task of tasks">
+      <input
+        type="checkbox"
+        [(ngModel)]="task.completed"
+        (change)="toggleTask(task)"
+      />
+      <span [class.completed]="task.completed">{{ task.description }}</span>
+      <button (click)="deleteTask(task.id!)">Delete</button>
+    </li>
+  </ul>
+</section>
